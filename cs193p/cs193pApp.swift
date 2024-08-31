@@ -11,7 +11,8 @@ import SwiftUI
 struct cs193pApp: App {
     var body: some Scene {
         WindowGroup {
-            CardsLayout()
+            CardsLayoutViewTwo()
+//            CardsLayoutView()
         }
     }
 }

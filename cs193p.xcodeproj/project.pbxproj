@@ -14,6 +14,7 @@
 		1579B3772C831C040091CE78 /* cs193pTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579B3762C831C040091CE78 /* cs193pTests.swift */; };
 		1579B3812C831C040091CE78 /* cs193pUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579B3802C831C040091CE78 /* cs193pUITests.swift */; };
 		1579B3832C831C040091CE78 /* cs193pUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579B3822C831C040091CE78 /* cs193pUITestsLaunchTests.swift */; };
+		1579B3902C83DA540091CE78 /* CardLayoutTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579B38F2C83DA540091CE78 /* CardLayoutTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		1579B37C2C831C040091CE78 /* cs193pUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cs193pUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1579B3802C831C040091CE78 /* cs193pUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cs193pUITests.swift; sourceTree = "<group>"; };
 		1579B3822C831C040091CE78 /* cs193pUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cs193pUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1579B38F2C83DA540091CE78 /* CardLayoutTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLayoutTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				1579B3642C831C020091CE78 /* cs193pApp.swift */,
 				1579B3662C831C020091CE78 /* ContentView.swift */,
+				1579B38F2C83DA540091CE78 /* CardLayoutTwo.swift */,
 				1579B3682C831C040091CE78 /* Assets.xcassets */,
 				1579B36A2C831C040091CE78 /* cs193p.entitlements */,
 				1579B36B2C831C040091CE78 /* Preview Content */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1579B3672C831C020091CE78 /* ContentView.swift in Sources */,
+				1579B3902C83DA540091CE78 /* CardLayoutTwo.swift in Sources */,
 				1579B3652C831C020091CE78 /* cs193pApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

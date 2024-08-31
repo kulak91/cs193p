@@ -7,57 +7,85 @@
 
 import SwiftUI
 
-struct CardsLayout: View {
+struct CardsLayoutView: View {
         var body: some View {
-            Cards()
+            CardGroupView()
         }
 }
+let emojis = [
+    ["🤡", "☺️", "🙃", "😇"],
+    ["🙏", "😂", "😎", "😏"],
+    ["🎃", "👻", "👽", "🤖"]
+    ]
 
-struct Cards: View {
+struct CardGroupView: View {
     var body: some View {
         Grid {
-            CardRow()
-            CardRow()
-            CardRow()
-        }.padding(25)
+            ForEach(emojis.indices, id: \.self) { i in
+                CardRowView(emojis: emojis[i])
+            }
+        }
+        .padding(25)
     }
 }
 
-struct CardRow: View {
+struct CardRowView: View {
+    let emojis: Array<String>
+    var reversed = false
+    
     var body: some View {
         GridRow {
-            ForEach(1...4, id: \.self) {i in
-                let odd = (i & 2) != 0
-                
-                Card(isFaceUp: odd)
+//            List(emojis, id: \.self) { emoji in
+//                CardView(content: emoji)
+//            }
+            ForEach(emojis.indices, id: \.self) {i in
+                let odd = (i % 2) != 0
+                CardView(content: emojis[i], isFaceUp: (reversed == false) ? odd: !odd)
             }
         }
     }
 }
 
-struct Card: View {
+struct CardView: View {
+    let content: String
     @State var isFaceUp = false
     
     var body: some View {
-        var base = RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/)
+        let base = RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/)
+        let size: CGFloat = 80
+        
             ZStack {
                 if isFaceUp {
                     base.fill(.cyan)
+                        .frame(maxWidth: size, maxHeight: size)
                     base.fill(.white).padding(4)
-                    Text("🥰").font(.largeTitle)
+                        .frame(maxWidth: size, maxHeight: size)
+                    Text(content).font(.largeTitle)
                 } else {
-                    RoundedRectangle(cornerRadius: 25.0).fill(.cyan).strokeBorder(.mint, lineWidth: 4)
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(.cyan)
+                        .strokeBorder(.mint, lineWidth: 4)
+                        .frame(maxWidth: size, maxHeight: size)
                 }
-            }.onTapGesture {
+            }
+            .onTapGesture {
                 isFaceUp.toggle()
             }
-        Spacer()
     }
 }
 
 
 
+//struct EcgPlot: View {
+//    var body: some View {
+//        Path
+//    }
+//}
 
-#Preview {
-    CardsLayout()
-}
+
+
+
+
+//#Preview {
+//    CardsLayoutView()
+//}
