@@ -7,31 +7,50 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        Cards()
-    }
+struct CardsLayout: View {
+        var body: some View {
+            Cards()
+        }
 }
 
 struct Cards: View {
     var body: some View {
         Grid {
-            ForEach(1...5, id: \.self) {_ in
-                Card().frame(width: 100)
+            CardRow()
+            CardRow()
+            CardRow()
+        }.padding(25)
+    }
+}
+
+struct CardRow: View {
+    var body: some View {
+        GridRow {
+            ForEach(1...4, id: \.self) {i in
+                let odd = (i & 2) != 0
+                
+                Card(isFaceUp: odd)
             }
-           
         }
-        .padding()
     }
 }
 
 struct Card: View {
+    @State var isFaceUp = false
+    
     var body: some View {
-        ZStack(alignment: /*@START_MENU_TOKEN@*/Alignment(horizontal: .center, vertical: .center)/*@END_MENU_TOKEN@*/ ) {
-            RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/).fill(.cyan)
-            RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/).fill(.white).padding(4)
-            Text("🥰").font(.largeTitle)
-        }
+        var base = RoundedRectangle(cornerSize: /*@START_MENU_TOKEN@*/CGSize(width: 20, height: 10)/*@END_MENU_TOKEN@*/)
+            ZStack {
+                if isFaceUp {
+                    base.fill(.cyan)
+                    base.fill(.white).padding(4)
+                    Text("🥰").font(.largeTitle)
+                } else {
+                    RoundedRectangle(cornerRadius: 25.0).fill(.cyan).strokeBorder(.mint, lineWidth: 4)
+                }
+            }.onTapGesture {
+                isFaceUp.toggle()
+            }
         Spacer()
     }
 }
@@ -40,5 +59,5 @@ struct Card: View {
 
 
 #Preview {
-    ContentView()
+    CardsLayout()
 }
